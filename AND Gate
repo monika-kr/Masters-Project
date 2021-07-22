@@ -1,0 +1,19 @@
+import numpy as np
+
+# Neural Network for AND Gate
+w1, w2 =   2,2   # set weights
+b1 = -3          # set bias
+
+# define activation function:
+def sigmoid_activation(x):         
+    return 1 / (1 + np.exp(-x))
+
+#define the output of the neural network    
+def output(x1, x2):  
+    return sigmoid_activation(x1*w1 + x2*w2 + b1)
+
+# print output for each of the outcomes:
+print("Output of (0,0) = ", output(0,0))
+print("Output of (1,0) = ", output(1,0))
+print("Output of (0,1) = ", output(0,1))
+print("Output of (1,1) = ", output(1,1))
