@@ -1,0 +1,29 @@
+import numpy as np
+
+# Neural Network for XOR gate:
+w1, w2, w3, w4, w5, w6 = 60, 80, 60, 80, -60, 60  # set weights
+b1, b2, b3 = -90, -40, -30                        # set bias
+
+
+# define activation function:
+def sigmoid_activation(x):         
+    return 1 / (1 + np.exp(-x ))
+
+#define the output of the first neuron in the hidden layer
+def h1_output(x1, x2):             
+    return sigmoid_activation(x1 * w1 + x2 * w3 + b1)
+    
+#define the output of the second neuron in the hidden layer
+def h2_output(x1, x2):       
+    return sigmoid_activation(x1 * w2 + x2 * w4 + b2)
+
+#define the output of the neural network    
+def output(x1, x2):  
+    return sigmoid_activation (h1_output(x1, x2) * w5 + \
+                               h2_output(x1, x2) * w6 + b3)
+
+# print output for each of the outcomes:
+print("Output of (0,0) = ", output(0,0))
+print("Output of (1,0) = ", output(1,0))
+print("Output of (0,1) = ", output(0,1))
+print("Output of (1,1) = ", output(1,1))
